@@ -1,30 +1,42 @@
 module.exports = function zeros(expression) {
   let count = 0;
-  let array = expression.split('*');
-  let arrayLength = array.length;
+  let multiplicants = expression.split('*');
 
-  for (let index = 0; index < array.length; index++) {
-    if (array[index].length == 2) {
-      let number = Number(array[0]);
-      count = count + defaultFactorail (number);
-    } else if (array[index].length == 3) {
-      let number = Number(array[0]);
-      count = count + notDefaultFactorail (number);
+  for (let i = 0; i < multiplicants.length; i++) {
+
+    if (isDefaultFactorial( multiplicants[i]) ) {
+      number = getNumberFromString(multiplicants[i]);
+      count = count + getZerosFromDefaultFactorial(number);
     } else {
-      
+      number = getNumberFromString(multiplicants[i]);
+      count = count + getZerosFromNotDefaultFactorail(number);
     }
   }
 
-  function defaultFactorail(number) {
-     return Math.trunc(number/5);
+  function isDefaultFactorial(element) {
+    let array = element.split('!');
+    if (array.length == 2) {
+      return true;
+    } else {
+      return false;
+    }
   }
   
-  function notDefaultFactorail(number) {
+  function getNumberFromString(string) {
+    return Number( string.split('!')[0] );
+  }
+
+  function getZerosFromDefaultFactorial(number) {
+    return Math.trunc(number/5); 
+  }
+  
+  function getZerosFromNotDefaultFactorail(number) {
     if (number % 2 == 0 ) {
       return Math.trunc(number/10);
     } else {
       return 0;
     }
   }
+
   return count;
 }
