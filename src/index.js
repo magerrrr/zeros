@@ -5,7 +5,7 @@ module.exports = function zeros(expression) {
   for (let i = 0; i < factorial.length; i++) {
     let multiplicants;
     let number = getNumberFromString(factorial[i]);
-
+    
     if (isDefaultFactorial( factorial[i]) ) {
       multiplicants = divideClassicFactorialByMultiplicants(number);
     } else {
@@ -19,20 +19,20 @@ module.exports = function zeros(expression) {
     summaryArrayOf2And5 = summaryArrayOf2And5.concat(arrayOf2And5);
   }
 
-  let countTwo = getCountOfNumber(summaryArrayOf2And5, 2);
-  let countFive = getCountOfNumber(summaryArrayOf2And5, 5);
+  let countOf2 = getCountOfNumber(summaryArrayOf2And5, 2);
+  let countOf5 = getCountOfNumber(summaryArrayOf2And5, 5);
 
-  return Math.min(countTwo, countFive);
+  return Math.min(countOf2, countOf5);
 
-  function getCountOfNumber(arr, num) {
-    let c = 0
+  function getCountOfNumber(array, number) {
+    let count = 0;
 
-    for(let i = 0; i< arr.length; i++) {
-      if (arr[i] === num) {
-        c++;
+    for(let i = 0; i< array.length; i++) {
+      if (array[i] === number) {
+        count++;
       }
     }
-    return c;
+    return count;
   }
 
   function divideClassicFactorialByMultiplicants(number) {
