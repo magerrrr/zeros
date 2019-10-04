@@ -1,5 +1,4 @@
 module.exports = function zeros(expression) {
-  let count = 0;
   let factorial = expression.split('*');
   let summaryArrayOf2And5 = [];
 
@@ -23,9 +22,7 @@ module.exports = function zeros(expression) {
   let countTwo = getCountOfNumber(summaryArrayOf2And5, 2);
   let countFive = getCountOfNumber(summaryArrayOf2And5, 5);
 
-  count = count + Math.min(countTwo, countFive);
-
-  return count;
+  return Math.min(countTwo, countFive);
 
   function getCountOfNumber(arr, num) {
     let c = 0
